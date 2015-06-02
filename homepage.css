@@ -1,0 +1,49 @@
+img.logo{
+	width:100%;
+	z-index: 0;
+}
+
+nav{
+	position: fixed;
+	height:0%;
+	margin-bottom: 0px;
+	z-index: 2;
+	font-size: 140%;
+}
+ul.dropdown-menu{
+	background: #7AABCC;
+	font-size: 110%;
+}
+ul.dropdown-menu>li>a{
+	color:white;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+body{
+	background-image: url("footer_lodyas.png");
+	color:#995C99;
+	font-family: Comic Sans MS, Monaco, DFKai-sb,Microsoft YaHei, "標楷體", sans-serif;
+}
+.ex{
+	display: block;
+	margin-top: 10%;
+	margin-bottom: 10%;
+	color:#659C51;
+}
+.ex>img{
+	margin-left: 0%;
+	height:200px;
+}
+.ex>h4{
+	font-size: 120%;
+	font-weight: 900;
+}
+
+h3{
+	text-align: center;	
+}
+.topic{
+	margin-top: 6%;
+	color:white;
+	font-size: 3.5em;
+}
