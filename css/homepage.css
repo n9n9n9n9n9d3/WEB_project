@@ -44,7 +44,7 @@ ul.dropdown-menu>li>a{
 	padding-bottom: 10px;
 }
 body{
-	background-image: url("background.jpg");
+	background-image: url("../background.jpg");
 	color:#995C99;
 	font-family:"微軟正黑體",Microsoft YaHei, Monaco, DFKai-sb, sans-serif;
 }
