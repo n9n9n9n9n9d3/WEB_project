@@ -1,5 +1,6 @@
 .container-fluid{
 	max-width: 80%;
+	position: relative;
 }
 .carousel {
   height: 450px;
@@ -97,3 +98,15 @@ body{
 	font-size: 2em;
 }
 
+.prev{
+	left:0px;
+	top:30%;
+	position: absolute;
+	z-index: 4;
+}
+.next{
+	right:-0px;
+	position: absolute;
+	top:30%;
+	z-index: 4;
+}
