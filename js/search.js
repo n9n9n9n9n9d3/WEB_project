@@ -29,10 +29,10 @@ $(document).ready(function() {
 
 
     $('.search-submit').on("click", function() {
+    	
         var Exhibition = Parse.Object.extend("Exhibition");
         var query = new Parse.Query(Exhibition);
         var time = $('.time-select option:selected').attr('value');
-        var place = $('.place-select option:selected').attr('value');
         var area = $('.area-select option:selected').attr('value');
         var cat = $('.cat-select option:selected').attr('value');
         var day = new Date();
@@ -44,30 +44,54 @@ $(document).ready(function() {
                 query.lessThan("Start", day);
                 break;
             case "passed":
-            	query.lessThan("End",day);
-            	day.setDate(day.getDate()+20);
-            	console.log(day);
-            	break;
+                query.lessThan("End", day);
+                day.setDate(day.getDate() + 20);
+                console.log(day);
+                break;
             case "week":
-            	query.greaterThan("Start",day);
-            	day.setDate(day.getDate()+7);
-            	query.lessThan("Start",day);
-            	break;
+                query.greaterThan("Start", day);
+                day.setDate(day.getDate() + 7);
+                query.lessThan("Start", day);
+                break;
             case "month":
-            	var day2= new Date(day);
-            	day2.setDate(day2.getDate()+7);
-            	console.log(day2+"xxxx");
-            	query.greaterThan("Start",day2);
-            	day.setMonth(day.getMonth()+1);
-            	console.log(day);
-            	query.lessThan("Start",day);
-            	break;
-            case"more":
-            	day.setMonth(day.getMonth()+1)
-            	query.greaterThan("Start",day);
+                var day2 = new Date(day);
+                day2.setDate(day2.getDate() + 7);
+                console.log(day2 + "xxxx");
+                query.greaterThan("Start", day2);
+                day.setMonth(day.getMonth() + 1);
+                console.log(day);
+                query.lessThan("Start", day);
+                break;
+            case "more":
+                day.setMonth(day.getMonth() + 1)
+                query.greaterThan("Start", day);
             default:
                 break;
         }
+
+        switch (area) {
+            case '1':
+                query.equalTo("Area", 1);
+                console.log('north');
+                break;
+            case '2':
+                query.equalTo("Area", 2);
+                break;
+            case '3':
+                query.equalTo("Area", 3);
+                break;
+            case '4':
+                query.equalTo("Area", 4);
+                break;
+            default:
+                break;
+        }
+
+        if(cat!=="none"){
+        	query.equalTo("Catgory".cat);
+        }
+
+
 
 
         query.find({
