@@ -1,20 +1,4 @@
-.real-pic>img{
-	max-height: 500px;
 
-}
-.real-pic{
-text-align: center;
-}
-
-.modal-content{
-	background-image: url("../binding_dark.png");
-	overflow:hidden;
-	
-}
-.container-fluid{
-	max-width: 80%;
-	position: relative;
-}
 .carousel {
   height: 450px;
   margin-bottom: 60px;
@@ -35,6 +19,25 @@ text-align: center;
 .carousel-caption{
 	top:85%;
 	z-index: 3;
+}
+.real-pic>img{
+	max-height: 500px;
+
+}
+.real-pic{
+text-align: center;
+}
+
+.modal-content{
+	background-image: url("../binding_dark.png");
+	overflow:hidden;
+	
+}
+.container-fluid{
+	max-width: 80%;
+	position: relative;
+	margin-right: auto;
+	margin-left: auto;
 }
 img.logo{
 	width:150px;
@@ -70,14 +73,18 @@ body{
 .login{
 	size: 60%;
 }
-
-.ow-carousel{
-	width: 80%;
-	margin-left: auto;
-	margin-right: auto;
+.topic{
+	margin-top: 6%;
+	text-align: center;
+    color:#000000;
+	font-size: 2em;
+}
+#myModal .modal-dialog  
+{
+	width:80%;
 }
 
-.owl-carousel .item{
+.containt .item{
 
 
   color: #FFF;
@@ -86,43 +93,18 @@ body{
   border-radius: 3px;
   text-align: center;
 }
-.owl-carousel .item>img{
+.containt .item>img{
 	margin-left: auto;
 	margin-right: auto;
 	max-height:200px;
 	max-width: 200px;
 }
-.owl-carousel .item>h4{
+.containt .item>h4{
 	font-size: 150%;
 	font-weight: 800;
   
 }
-.owl-carousel .item>p{
+.containt .item>p{
 	font-size:95%;
 	color: #FFF;
-}
-
-
-.topic{
-	margin-top: 6%;
-	text-align: center;
-    color:#000000;
-	font-size: 2em;
-}
-
-.prev{
-	left:-50px;
-	top:30%;
-	position: absolute;
-	z-index: 4;
-}
-.next{
-	right:-50px;
-	position: absolute;
-	top:30%;
-	z-index: 4;
-}
-#myModal .modal-dialog  
-{
-	width:80%;
 }

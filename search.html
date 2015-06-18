@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/homepage.css">
     <link rel="stylesheet" href="owl-carousel/owl.carousel.css">
     <link rel="stylesheet" href="owl-carousel/owl.theme.css">
+    <link rel="stylesheet" href="css/search.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
@@ -132,23 +132,33 @@
             </div>
         </div>
     </div>
-    <p class="topic"><i class="fa fa-university"></i>本月推薦</p>
-    <hr>
-    <div class="container-fluid">
-        <i class="fa fa-chevron-left fa-3x comment prev"></i>
-        <i class="fa fa-chevron-right fa-3x comment next"></i>
-        <div id="owl-comment" class="owl-carousel">
-        </div>
+    <select class="form-control time-select">
+        <option value="zero">無特定時間</option>
+        <option value="passed">已結束</option>
+        <option value="on">進行中</option>
+        <option value="week">一周內</option>
+        <option value="month">一個月內</option>
+        <option value="more">一個月以後</option>
+    </select>
+        <select class="form-control place-select">
+        <option value="0">無特定地區</option>
+        <option value="1">北部</option>
+        <option value="2">中部</option>
+        <option value="3">南部</option>
+        <option value="4">東部</option>
+        </select>
+        <select class="form-control cat-select">
+        <option value="zero">無特定類別</option>
+        <option value="one">藝術</option>
+        <option value="two">bla</option>
+        <option value="three">blablabla</option>
+        <option value="four">blablablalba</option>
+        <option value="five">blablablablalba</option>
+    </select>
+    <button type="button" class="search-submit btn btn-primary">Primary</button>
+    <script src="js/search.js"></script>
+    <div class="container-fluid containt">
     </div>
-    <p class="topic"><i class="fa fa-rocket"></i>評價最高</p>
-    <hr>
-    <div class="container-fluid">
-        <i class="fa fa-chevron-left fa-3x high prev"></i>
-        <i class="fa fa-chevron-right fa-3x high next"></i>
-        <div id="owl-high" class="owl-carousel">
-        </div>
-    </div>
-    <script src="js/homepage.js"></script>
 </body>
 
 </html>
