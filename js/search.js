@@ -29,7 +29,8 @@ $(document).ready(function() {
 
 
     $('.search-submit').on("click", function() {
-    	
+        $('.containt>h1').text('Search Result');
+
         var Exhibition = Parse.Object.extend("Exhibition");
         var query = new Parse.Query(Exhibition);
         var time = $('.time-select option:selected').attr('value');
@@ -87,8 +88,8 @@ $(document).ready(function() {
                 break;
         }
 
-        if(cat!=="none"){
-        	query.equalTo("Catgory".cat);
+        if (cat !== "none") {
+            query.equalTo("Catgory".cat);
         }
 
 
@@ -96,6 +97,10 @@ $(document).ready(function() {
 
         query.find({
             success: function(result) {
+                if (result.length === 0) {
+                    alert('No match exhibition found');
+                    return;
+                }
                 console.log(result);
                 $(".containt>.item").remove();
                 for (var i = 0; i < result.length; i++) {
@@ -112,5 +117,6 @@ $(document).ready(function() {
         });
 
     });
+
 
 });
