@@ -3,6 +3,8 @@
 	margin-top: 40px;
 	padding-top: 6px;
 	background-color: rgba(81,81,81,0.5);
+	position: relative;
+
 }
 #footer-bottom{
 	width:800px;
@@ -138,6 +140,9 @@ body{
 #myModal .modal-dialog  
 {
 	width:80%;
+}
+.containt{
+	min-height: 250px;
 }
 
 .containt .item{
