@@ -11,7 +11,7 @@ window.fbAsyncInit = function() {
       FB.getLoginStatus(function(response) {
             if (response.status === 'connected') {
                 FB.api('/me/picture?type=large', function(response) {
-                    $('.navbar-right').append("<img src = "+response.data.url+" crossorigin = \"anonymous\" id=preview1 / >");
+                    $('.navbar-right').prepend("<img src = "+response.data.url+" crossorigin = \"anonymous\" id=preview1 / >");
                 });
             }
         });
