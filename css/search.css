@@ -1,3 +1,8 @@
+.self-pic>img{
+	box-shadow: 5px 4px 10px 3px #C9C7C3;
+	border-radius: 40px 40px 40px 40px;
+}
+
 #preview1{
 	max-height:34px ;
 }
