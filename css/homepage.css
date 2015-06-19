@@ -1,4 +1,6 @@
 .self-pic>img{
+		-webkit-border-radius: 40px 40px 40px 40px;
+	-webkit-box-shadow: 5px 4px 10px 3px #C9C7C3;
 	box-shadow: 5px 4px 10px 3px #C9C7C3;
 	border-radius: 40px 40px 40px 40px;
 }
