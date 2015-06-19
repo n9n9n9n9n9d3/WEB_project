@@ -26,6 +26,7 @@ function fblogin(){
 			    } else {
 			      alert("透過臉書登入成功");
 			    }
+			    window.location="index.html";
 			  },
 			  error: function(user, error) {
 			    alert("使用者取消登入或沒有授權");
