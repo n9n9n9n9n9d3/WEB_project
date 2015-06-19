@@ -68,6 +68,7 @@ $(document).ready(function() {
     $('.logout').on('click',function(e){
       e.preventDefault();
       Parse.User.logOut();
+      FB.logout(function(response) {});
       alert("登出成功");
       $('.logout').hide();
       window.location="index.html";
