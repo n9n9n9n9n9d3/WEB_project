@@ -160,10 +160,11 @@ $(document).ready(function() {
                 var object = result[0];
                 var sdate = object.get('Start');
                 var edate = object.get('End');
-                $('#mymodal .modal-title').text(object.get('Name'));
+                $('#myModalLabel').text(object.get('Name'));
+                console.log(object.get('Name'));
+                console.log( $('#myModalLabel').text());
                 $('#place>i').text(object.get('Place'));
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
-                console.log(sdate.getFullYear().toString());
                 $('#intro>span').html(object.get('Intro'));
                 $('#time>i').text(sdate.getFullYear().toString() + '/' + sdate.getMonth().toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + edate.getMonth().toString() + '/' + edate.getDate().toString());
             },
