@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/key.js"></script>
 </head>
 
 <body>
@@ -39,23 +40,23 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catagory<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
-                            <li><a >書畫</a></li>
-                            <li><a >攝影</a></li>
-                            <li><a >設計</a></li>
-                            <li><a >文物</a></li>
-                            <li><a >科學</a></li>
-                            <li><a >動漫</a></li>
-                            <li><a >裝置藝術</a></li>
+                            <li><a>書畫</a></li>
+                            <li><a>攝影</a></li>
+                            <li><a>設計</a></li>
+                            <li><a>文物</a></li>
+                            <li><a>科學</a></li>
+                            <li><a>動漫</a></li>
+                            <li><a>裝置藝術</a></li>
                         </ul>
-                    </li>
-                    <li><a href="#" class="login">LogIn</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
+                    <a href="logIn.html" class="login">LogIn</a>
+                    <a  class="logout">LogOut</a>
                     <div class="form-group">
                         <input type="text" class="form-control easysearch">
                     </div>
-                    <button  class="btn btn-default easybutton">Search</button>
+                    <button class="btn btn-default easybutton">Search</button>
                     <a class="btn btn-link" href="search.html" role="button">Advanced Search</a>
                 </form>
             </div>
@@ -99,7 +100,6 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -135,22 +135,22 @@
         </div>
     </div>
     <div class="container-fluid containt">
-    <p class="topic"><i class="fa fa-university"></i>本月推薦</p>
-    <hr>
-    <div class="container-fluid">
-        <i class="fa fa-chevron-left fa-3x comment prev"></i>
-        <i class="fa fa-chevron-right fa-3x comment next"></i>
-        <div id="owl-comment" class="owl-carousel">
+        <p class="topic"><i class="fa fa-university"></i>本月推薦</p>
+        <hr>
+        <div class="container-fluid">
+            <i class="fa fa-chevron-left fa-3x comment prev"></i>
+            <i class="fa fa-chevron-right fa-3x comment next"></i>
+            <div id="owl-comment" class="owl-carousel">
+            </div>
         </div>
-    </div>
-    <p class="topic"><i class="fa fa-rocket"></i>評價最高</p>
-    <hr>
-    <div class="container-fluid">
-        <i class="fa fa-chevron-left fa-3x high prev"></i>
-        <i class="fa fa-chevron-right fa-3x high next"></i>
-        <div id="owl-high" class="owl-carousel">
+        <p class="topic"><i class="fa fa-rocket"></i>評價最高</p>
+        <hr>
+        <div class="container-fluid">
+            <i class="fa fa-chevron-left fa-3x high prev"></i>
+            <i class="fa fa-chevron-right fa-3x high next"></i>
+            <div id="owl-high" class="owl-carousel">
+            </div>
         </div>
-    </div>
     </div>
     <script src="js/homepage.js"></script>
 </body>

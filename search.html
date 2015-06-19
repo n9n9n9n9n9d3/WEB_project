@@ -15,6 +15,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
     <script src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="owl-carousel/owl.carousel.min.js"></script>
+    <script type="text/javascript" src="js/key.js"></script>
 </head>
 
 <body>
@@ -39,23 +40,23 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catagory<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
-                            <li><a >書畫</a></li>
-                            <li><a >攝影</a></li>
-                            <li><a >設計</a></li>
-                            <li><a >文物</a></li>
-                            <li><a >科學</a></li>
-                            <li><a >動漫</a></li>
-                            <li><a data-cat="Art" >裝置藝術</a></li>
+                            <li><a>書畫</a></li>
+                            <li><a>攝影</a></li>
+                            <li><a>設計</a></li>
+                            <li><a>文物</a></li>
+                            <li><a>科學</a></li>
+                            <li><a>動漫</a></li>
+                            <li><a data-cat="Art">裝置藝術</a></li>
                         </ul>
-                    </li>
-                    <li><a href="#" class="login">LogIn</a>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
+                    <a href="logIn.html" class="login">LogIn</a>
+                    <a  class="logout">LogOut</a>
                     <div class="form-group">
                         <input type="text" class="form-control easysearch">
                     </div>
-                    <button  onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton">Search</button>
+                    <button onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton">Search</button>
                     <a class="btn btn-link" href="search.html" role="button">Advanced Search</a>
                 </form>
             </div>
@@ -162,10 +163,8 @@
         <script src="js/search.js"></script>
     </div>
     <div class="container-fluid containt">
-    <h1></h1>
+        <h1></h1>
     </div>
-
-  
 </body>
 
 </html>

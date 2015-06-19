@@ -1,0 +1,105 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>註冊頁面</title>
+  <meta name="viewport" content="width=device-width">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css.css">
+
+  <!--引入初始化 Parse 的 js 檔案-->
+  <script type="text/javascript" src="js/key.js"></script>
+  <script  type="text/javascript">
+
+$(document).on('submit','#signUpForm',function(e){
+      e.preventDefault();  
+      var user = new Parse.User();
+      user.set("username", $('#username').val());
+      user.set("email",    $('#email').val());
+      user.set("password", $('#password').val());
+      
+      
+      
+      user.signUp(null,{
+        success : function(user){     // 註冊成功後會執行的 callback
+          console.log(user);
+          alert("使用者註冊成功");
+
+          window.location="logIn.html" ;
+        },
+        error : function(user,error){ // 註冊失敗後會執行的 callback
+          alert(error.message) ;
+        }
+      });//endof signUp
+
+    }); 
+  </script>
+</head>
+
+<body>
+  
+ <center>
+  <div class="container">
+    
+      <form id="signUpForm" class="form-horizontal">
+      <fieldset>
+
+      <!-- Form Name -->
+      <div class = "row">
+          <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <hr><div class = "or">OR</div>
+            </div>
+          </div>
+
+          
+    <div class = "type">
+      <!-- Text input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="username"></label>
+        <div class="col-md-4">
+        <input id="username" name="username" type="text" placeholder="USERNAME" class="form-control input-md" required="">
+
+        </div>
+      </div>
+ 
+
+      <!-- Text input-->
+    
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="email"></label>
+        <div class="col-md-4">
+        <input id="email" name="email" type="text" placeholder="EMAIL" class="form-control input-md" required="">
+
+        </div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="password"></label>
+        <div class="col-md-4">
+          <input id="password" name="password" type="password" placeholder="PASSWORD" class="form-control input-md" required="">
+
+        </div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="signUpBtn"></label>
+        <div class="col-md-4">
+          <button id="signUpBtn" name="signUpBtn" class="btn btn-default">註冊</button>
+          <a class="btn" href="logIn.html">前往登入</a>
+        </div>
+      </div>
+      
+      <div>
+        
+      </fieldset>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+
+

@@ -1,0 +1,105 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>登入頁面</title>
+  <meta name="viewport" content="width=device-width">
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/css.css">
+
+  <!--引入初始化 Parse 的 js 檔案-->
+  <script type="text/javascript" src="js/key.js"></script>
+  <script  type="text/javascript">
+
+
+
+    $(document).on('submit','#logInForm',function(e){
+      var current = Parse.User.current();
+      if(current){
+        window.location="index.html";
+      }
+      console.log('logIn submit');
+    e.preventDefault();
+    var username = $('#username').val();
+    var password = $('#password').val();
+
+    Parse.User.logOut();
+    Parse.User.logIn( username , password , {
+      success: function(user) {
+        var current = Parse.User.current();
+        alert('登入成功') ;
+        window.location = 'index.html' ;
+      
+      },
+      error: function(user, error) {
+        alert(error.message) ;
+      }
+    });
+  });  
+  </script>
+</head>
+
+<body>
+  <center>
+  <div class="container">
+    <div class="row">
+      <form id="logInForm" class="form-horizontal">
+      <fieldset>
+
+      <!-- Form Name -->
+        <div class = "row">
+          <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <hr><div class = "or">OR</div>
+            </div>
+          </div>
+
+      <!-- Text input-->
+       <div class = "type">
+      <div class="form-group">
+        <div class = "row">
+          
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+        <input id="username" name="username" type="text" placeholder="USERNAME" class="form-control input-md" required="">
+
+        </div></div>
+      </div>
+
+      <!-- Password input-->
+      <div class="form-group">
+        <div class = "row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <input id="password" name="password" type="password" placeholder="PASSWORD" class="form-control input-md" required="">
+
+        </div></div>
+      </div>
+
+      <!-- Button -->
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="logInBtn"></label>
+        <div class="col-md-4">
+          <button id="logInBtn" name="logInBtn" class="btn btn-default">登入</button>
+          <a href="signUp.html" class="btn">註冊</a>
+          <button id="fbloginBtn" class="btn btn-primary" type="submit">臉書登入</button>
+        </div>
+      </div>
+    </div>
+      </fieldset>
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript">
+  $('#fbloginBtn').on('click',function(e){
+    console.log('click!');
+    e.preventDefault();
+    fblogin();
+    window.location="index.html";
+  })
+  </script>
+</body>
+</html>
+
+

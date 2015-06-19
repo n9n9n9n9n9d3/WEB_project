@@ -33,7 +33,7 @@ var queryCat = function(depend, owl) {
 
 $(document).ready(function() {
 
-
+    var currentUser = Parse.User.current();
     var owl = $("#owl-comment");
     var owl2 = $("#owl-high");
 
@@ -55,6 +55,25 @@ $(document).ready(function() {
         items: 5,
     });
     $(".owl-stage div:first-child").remove();
+
+    if(currentUser){
+      $('.login').hide();
+      $('.logout').show();
+    }
+    else{
+      $('.login').show();
+      $('.logout').hide();
+    }
+
+    $('.logout').on('click',function(e){
+      e.preventDefault();
+      Parse.User.logOut();
+      alert("登出成功");
+      $('.logout').hide();
+      window.location="index.html";
+    })
+
+
 
     $(".comment.next").mouseover(function() {
         for (var i = 0; i < 5; i++) {
