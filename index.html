@@ -50,7 +50,7 @@
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
-                    <a class="profile btn btn-link" href="profile.html">個人檔案</a>
+                    <a class="profile btn btn-link" data-toggle="modal" data-target="#proModal" >個人檔案</a>
                     <a href="logIn.html" class="login btn btn-link">LogIn</a>
                     <a class="logout btn btn-link">LogOut</a>
                     <div class="form-group">
@@ -100,6 +100,10 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
+
+
+
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -134,6 +138,25 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">個人檔案</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="self-pic">
+                        <img src=""alt="picture"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container-fluid containt">
         <p class="topic"><i class="fa fa-university"></i>本月推薦</p>
         <hr>

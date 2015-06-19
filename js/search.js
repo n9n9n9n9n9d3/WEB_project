@@ -2,72 +2,88 @@ Parse.initialize("zq26lP7dyXL0SyvJ1SOyDjUwn27O9Wxa3eFehdi7", "nrMNihVPIxOwlls7NJ
 
 window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
-      appId      : '1461518597495814',
-      xfbml      : true,
-      version    : 'v2.3'
+        appId: '1461518597495814',
+        xfbml: true,
+        version: 'v2.3'
     });
-      FB.getLoginStatus(function(response) {
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            FB.api('/me/picture?type=large', function(response) {
+                $('.navbar-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
+            });
+        }
+    });
+
+};
+
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "http://connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+function EasySearch(event) {
+    event.preventDefault();
+    var Exhibition = Parse.Object.extend("Exhibition");
+    var query = new Parse.Query(Exhibition);
+    var key = $('.easysearch').val();
+    key = decodeURI(key);
+    console.log(key);
+    query.matches('Name', ".*" + key + ".*");
+    query.find({
+        success: function(result) {
+            console.log(result);
+            $(".containt>.item").remove();
+            if (result.length === 0) {
+                alert('No match exhibition found');
+                return;
+            }
+            console.log(result);
+            $(".containt>.item").remove();
+            for (var i = 0; i < result.length; i++) {
+                var object = result[i];
+                var sdate = object.get('Start');
+                var edate = object.get('End');
+                var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
+                $(".containt").append(content);
+            }
+        },
+        error: function(error) {
+            console.log(error.message);
+        }
+    })
+}
+
+$(document).ready(function() {
+    var currentUser = Parse.User.current();
+    var qstring = window.location.search;
+    console.log(window.location.search);
+    if (qstring.length > 0) {
+        qstring = qstring.slice(1);
+        $('.easysearch').val(qstring);
+        document.getElementById("easybutton").click();
+    }
+
+    $('.profile').on('click', function() {
+        $('.self-pic>img').attr("src", "images/big.jpg");
+        var currentUser = Parse.User.current();
+        FB.getLoginStatus(function(response) {
+            console.log(response);
             if (response.status === 'connected') {
                 FB.api('/me/picture?type=large', function(response) {
-                    $('.navbar-right').prepend("<img src = "+response.data.url+" crossorigin = \"anonymous\" id=preview1 / >");
+                    $('.self-pic>img').attr("src", response.data.url);
                 });
             }
         });
 
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "http://connect.facebook.net/en_US/all.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-
-
-	function EasySearch(event){
-		event.preventDefault();
-		var Exhibition = Parse.Object.extend("Exhibition");
-		var query = new Parse.Query(Exhibition);
-		var key=$('.easysearch').val();
-		key=decodeURI(key);
-		console.log(key);
-		query.matches('Name',".*"+key+".*");
-		query.find({
-            success: function(result) {
-            	console.log(result);
-            	$(".containt>.item").remove();
-                if (result.length === 0) {
-                    alert('No match exhibition found');
-                    return;
-                }
-                console.log(result);
-                $(".containt>.item").remove();
-                for (var i = 0; i < result.length; i++) {
-                    var object = result[i];
-                    var sdate = object.get('Start');
-                    var edate = object.get('End');
-                    var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
-                    $(".containt").append(content);
-                }
-            },
-            error: function(error) {
-                console.log(error.message);
-            }
-        })
-}
-
-$(document).ready(function() {
-	var currentUser = Parse.User.current();
-	  var qstring=window.location.search;
-	  console.log(window.location.search);
-	  if(qstring.length>0){
-	  	qstring=qstring.slice(1);
-	  	$('.easysearch').val(qstring);
-	  	document.getElementById("easybutton").click();
-	  }
-
+    })
 
     $('#myModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
@@ -85,7 +101,7 @@ $(document).ready(function() {
                 $('#place>i').text(object.get('Place'));
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
                 console.log(sdate.getFullYear().toString());
-                $('#intro>span').html(object.get('Intro'));                
+                $('#intro>span').html(object.get('Intro'));
                 $('#time>i').text(sdate.getFullYear().toString() + '/' + sdate.getMonth().toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + edate.getMonth().toString() + '/' + edate.getDate().toString());
             },
             error: function(error) {
@@ -95,52 +111,51 @@ $(document).ready(function() {
 
     });
 
-	if(currentUser){
-      $('.login').hide();
-      $('.logout').show();
-    }
-    else{
-      $('.login').show();
-      $('.logout').hide();
+    if (currentUser) {
+        $('.login').hide();
+        $('.logout').show();
+    } else {
+        $('.login').show();
+        $('.logout').hide();
     }
 
-    $('.logout').on('click',function(e){
-      e.preventDefault();
-      Parse.User.logOut();
-      FB.logout(function(response) {});
-      alert("登出成功");
-      $('.logout').hide();
-      window.location="index.html";
+    $('.logout').on('click', function(e) {
+        e.preventDefault();
+        Parse.User.logOut();
+        FB.logout(function(response) {});
+        alert("登出成功");
+        $('.logout').hide();
+        window.location = "index.html";
     })
 
 
-	$('.nav .dropdown-menu a').on('click',function(event){
-		var button = $(event.currentTarget);
-		$('.containt *').remove();
-		$('.containt').append('<p class=\"topic\"><i class=\"fa fa-university\"></i>'+button.text()+'</p><hr>');
-		var cat=button.attr('id');
-		console.log(cat);
-		var Exhibition = Parse.Object.extend("Exhibition");
-    	var query = new Parse.Query(Exhibition);
-   		query.equalTo("Catgory", cat);
-    	query.ascending("Start");
-    query.find({
-        success: function(result) {
-            console.log(result);
-            for (var i = 0; i < result.length; i++) {
-                var object = result[i];
-                var sdate = object.get('Start');
-                var edate = object.get('End');
-                var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
-                $('.containt').append(content);
-                console.log(content);
+    $('.nav .dropdown-menu a').on('click', function(event) {
+        var button = $(event.currentTarget);
+        $('.containt *').remove();
+        $('.containt').append('<p class=\"topic\"><i class=\"fa fa-university\"></i>' + button.text() + '</p><hr>');
+        var cat = button.attr('id');
+        console.log(cat);
+        var Exhibition = Parse.Object.extend("Exhibition");
+        var query = new Parse.Query(Exhibition);
+        query.equalTo("Catgory", cat);
+        query.ascending("Start");
+        query.find({
+            success: function(result) {
+                console.log(result);
+                for (var i = 0; i < result.length; i++) {
+                    var object = result[i];
+                    var sdate = object.get('Start');
+                    var edate = object.get('End');
+                    var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
+                    $('.containt').append(content);
+                    console.log(content);
+                }
+            },
+            error: function(error) {
+                console.log(error.message);
             }
-        },
-        error: function(error) {
-            console.log(error.message);
-        }
-	});
-});
+        });
+    });
 
 
 
@@ -152,11 +167,11 @@ $(document).ready(function() {
         var time = $('.time-select option:selected').attr('value');
         var area = $('.area-select option:selected').attr('value');
         var cat = $('.cat-select option:selected').attr('value');
-        var name= $('.nameinput').val();
+        var name = $('.nameinput').val();
         var day = new Date();
         var test = new Date(2000, 7, 20);
-        if(name.length!==0){
-        	query.matches('Name',".*"+name+".*");
+        if (name.length !== 0) {
+            query.matches('Name', ".*" + name + ".*");
         }
 
         switch (time) {
@@ -217,7 +232,7 @@ $(document).ready(function() {
 
         query.find({
             success: function(result) {
-            	$(".containt>.item").remove();
+                $(".containt>.item").remove();
                 if (result.length === 0) {
                     alert('No match exhibition found');
                     return;

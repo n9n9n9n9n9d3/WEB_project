@@ -4,27 +4,30 @@ Parse.initialize("zq26lP7dyXL0SyvJ1SOyDjUwn27O9Wxa3eFehdi7", "nrMNihVPIxOwlls7NJ
 
 window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
-      appId      : '1461518597495814',
-      xfbml      : true,
-      version    : 'v2.3'
+        appId: '1461518597495814',
+        xfbml: true,
+        version: 'v2.3'
     });
-      FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                FB.api('/me/picture?type=large', function(response) {
-                    $('.navbar-right').prepend("<img src = "+response.data.url+" crossorigin = \"anonymous\" id=preview1 / >");
-                });
-            }
-        });
+    FB.getLoginStatus(function(response) {
+        if (response.status === 'connected') {
+            FB.api('/me/picture?type=large', function(response) {
+                $('.navbar-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
+            });
+        }
+    });
 
-  };
+};
 
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "http://connect.facebook.net/en_US/all.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
+(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+        return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "http://connect.facebook.net/en_US/all.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
 
 
 
@@ -82,15 +85,31 @@ $(document).ready(function() {
     $(".owl-stage div:first-child").remove();
 
     if (currentUser) {
-        
+
         $('.profile').show();
         $('.login').hide();
         $('.logout').show();
+        $('.profile').attr("id", currentUser.get('username'));
     } else {
         $('.profile').hide();
         $('.login').show();
         $('.logout').hide();
     }
+
+    $('.profile').on('click', function() {
+      $('.self-pic>img').attr("src","images/big.jpg");
+        var currentUser = Parse.User.current();
+        FB.getLoginStatus(function(response) {
+          console.log(response);
+            if (response.status === 'connected') {
+                FB.api('/me/picture?type=large', function(response) {
+                    $('.self-pic>img').attr("src",response.data.url);
+                });
+            }
+        });
+
+    })
+
 
     $('.logout').on('click', function(e) {
         e.preventDefault();
@@ -141,7 +160,7 @@ $(document).ready(function() {
                 var object = result[0];
                 var sdate = object.get('Start');
                 var edate = object.get('End');
-                $('.modal-title').text(object.get('Name'));
+                $('#mymodal .modal-title').text(object.get('Name'));
                 $('#place>i').text(object.get('Place'));
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
                 console.log(sdate.getFullYear().toString());
