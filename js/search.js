@@ -36,6 +36,7 @@ Parse.initialize("zq26lP7dyXL0SyvJ1SOyDjUwn27O9Wxa3eFehdi7", "nrMNihVPIxOwlls7NJ
 }
 
 $(document).ready(function() {
+	var currentUser = Parse.User.current();
 	  var qstring=window.location.search;
 	  console.log(window.location.search);
 	  if(qstring.length>0){
@@ -71,7 +72,23 @@ $(document).ready(function() {
 
     });
 
-	
+	if(currentUser){
+      $('.login').hide();
+      $('.logout').show();
+    }
+    else{
+      $('.login').show();
+      $('.logout').hide();
+    }
+
+    $('.logout').on('click',function(e){
+      e.preventDefault();
+      Parse.User.logOut();
+      FB.logout(function(response) {});
+      alert("登出成功");
+      $('.logout').hide();
+      window.location="index.html";
+    })
 
 
 	$('.nav .dropdown-menu a').on('click',function(event){
