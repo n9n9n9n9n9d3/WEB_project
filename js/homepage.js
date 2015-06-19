@@ -1,7 +1,32 @@
 //Parse initialize
 Parse.initialize("zq26lP7dyXL0SyvJ1SOyDjUwn27O9Wxa3eFehdi7", "nrMNihVPIxOwlls7NJD6CtYsfpnxRiP0xXsIGP6T");
 
-//query function
+
+window.fbAsyncInit = function() {
+    Parse.FacebookUtils.init({
+      appId      : '1461518597495814',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+      FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                FB.api('/me/picture?type=large', function(response) {
+                    $('.navbar-right').append("<img src = "+response.data.url+"crossorigin = \"anonymous\" id=preview1 / >");
+                });
+            }
+        });
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "http://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+
+
 
 var queryCat = function(depend, owl) {
     var Exhibition = Parse.Object.extend("Exhibition");
@@ -57,13 +82,7 @@ $(document).ready(function() {
     $(".owl-stage div:first-child").remove();
 
     if (currentUser) {
-        FB.getLoginStatus(function(response) {
-            if (response.status === 'connected') {
-                FB.api('/me/picture?type=large', function(response) {
-                    $('.navbar-right').append("<img src = "+response.data.url+"crossorigin = \"anonymous\" id=preview1 / >");
-                });
-            }
-        });
+        
         $('.profile').show();
         $('.login').hide();
         $('.logout').show();
