@@ -41,13 +41,13 @@ $(document).ready(function() {
     owl2.owlCarousel();
 
 
-    queryCat("Art", owl);
-    queryCat("Architect", owl2);
+    queryCat("Design", owl);
+    queryCat("CulturalRelic", owl2);
     owl2.trigger('destroy.owl.carousel');
     owl.trigger('destroy.owl.carousel');
     owl2.owlCarousel({
-      items:5,
-        margin:10,
+        items: 5,
+        margin: 10,
 
 
     });
@@ -56,22 +56,30 @@ $(document).ready(function() {
     });
     $(".owl-stage div:first-child").remove();
 
-    if(currentUser){
-      $('.login').hide();
-      $('.logout').show();
-    }
-    else{
-      $('.login').show();
-      $('.logout').hide();
+    if (currentUser) {
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                FB.api('/me/picture?type=large', function(response) {
+                    $('.navbar-right').append("<img src = "+response.data.url+"crossorigin = \"anonymous\" id=preview1 / >");
+                });
+            }
+        });
+        $('.profile').show();
+        $('.login').hide();
+        $('.logout').show();
+    } else {
+        $('.profile').hide();
+        $('.login').show();
+        $('.logout').hide();
     }
 
-    $('.logout').on('click',function(e){
-      e.preventDefault();
-      Parse.User.logOut();
-      FB.logout(function(response) {});
-      alert("登出成功");
-      $('.logout').hide();
-      window.location="index.html";
+    $('.logout').on('click', function(e) {
+        e.preventDefault();
+        Parse.User.logOut();
+        FB.logout(function(response) {});
+        alert("登出成功");
+        $('.logout').hide();
+        window.location = "index.html";
     })
 
 
