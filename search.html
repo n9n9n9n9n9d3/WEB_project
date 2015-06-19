@@ -28,7 +28,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="index.html">
                     <img class="logo" src="http://i.imgur.com/JkN2u37.png">
                 </a>
             </div>
@@ -38,14 +38,14 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catagory<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">建築</a></li>
-                            <li><a href="#">書畫</a></li>
-                            <li><a href="#">攝影</a></li>
-                            <li><a href="#">設計</a></li>
-                            <li><a href="#">文物</a></li>
-                            <li><a href="#">科學</a></li>
-                            <li><a href="#">動漫</a></li>
-                            <li><a href="#">裝置藝術</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
+                            <li><a >書畫</a></li>
+                            <li><a >攝影</a></li>
+                            <li><a >設計</a></li>
+                            <li><a >文物</a></li>
+                            <li><a >科學</a></li>
+                            <li><a >動漫</a></li>
+                            <li><a data-cat="Art" >裝置藝術</a></li>
                         </ul>
                     </li>
                     <li><a href="#" class="login">LogIn</a>
@@ -53,9 +53,9 @@
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <div class="form-group">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control easysearch">
                     </div>
-                    <button type="search" class="btn btn-default">Search</button>
+                    <button  onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton">Search</button>
                     <a class="btn btn-link" href="search.html" role="button">Advanced Search</a>
                 </form>
             </div>
@@ -123,7 +123,7 @@
                 <div class="row">
                     <p id="intro">
                         <span>
-                    日本重量級藝術家草間彌生在台首次個展「夢我所夢：草間彌生亞洲巡迴展」，2015年在高雄與台中兩地登場，涵蓋草間橫跨60年的創作與新作，是台灣草間彌生空前個展。本展由日本草間彌生工作室，與韓國大邱市立美術館館長金善姬策畫，由國立台灣美術館、高雄市立美術館、時藝多媒體與閣林文創共同主辦。2012年草間在英國泰特現代美術館展期間，草間親自訪問倫敦，同步發表與路易威登的跨界合作，掀起輿論話題；現正在中南美洲的巡迴展，也創下200萬參觀人潮。「夢我所夢」巡迴展自2013年始於韓國大邱，之後在上海、首爾都締造口碑，2015年來到台灣。「夢我所夢」2015年2月7日至5月17日在高雄市立美術館登場，之後6月6日至8月30日轉至台中國立台灣美術館。在農曆年前，台北鴻海集團三創數位公司先在台北資訊園區推出綜合性文化創意產業基地「三創生活園區」，除了展示草間創作系列中罕見的不鏽鋼雕塑作品，另打造草間教育推廣基地等。
+                    
                     </span>
                     </p>
                 </div>
@@ -134,6 +134,7 @@
         </div>
     </div>
     <div class="container-fluid searchbar">
+        <input type="text" class="form-control nameinput" placeholder="展覽名稱">
         <select class="form-control time-select">
             <option value="zero">無特定時間</option>
             <option value="passed">已結束</option>
