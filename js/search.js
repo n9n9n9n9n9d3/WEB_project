@@ -1,5 +1,28 @@
 Parse.initialize("zq26lP7dyXL0SyvJ1SOyDjUwn27O9Wxa3eFehdi7", "nrMNihVPIxOwlls7NJD6CtYsfpnxRiP0xXsIGP6T");
 
+window.fbAsyncInit = function() {
+    Parse.FacebookUtils.init({
+      appId      : '1461518597495814',
+      xfbml      : true,
+      version    : 'v2.3'
+    });
+      FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                FB.api('/me/picture?type=large', function(response) {
+                    $('.navbar-right').prepend("<img src = "+response.data.url+" crossorigin = \"anonymous\" id=preview1 / >");
+                });
+            }
+        });
+
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "http://connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
 
 
