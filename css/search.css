@@ -1,3 +1,43 @@
+.cc3s{
+	-webkit-border-radius: 10px 10px 10px 10px;
+	border-radius: 10px 10px 10px 10px;
+	-webkit-box-shadow: 3px 3px 10px 3px #262422;
+	box-shadow: 3px 3px 10px 3px #262422;
+	background-color: rgba(209, 211, 206, 1) !important;
+	font-size: 40px;
+	margin-top:20px;
+	margin-bottom: 20px;
+	margin-left:auto;
+	margin-right: auto;
+	width:80%;
+	border:20px;
+	padding: 5px;
+	padding-left: 20px;
+	min-height: 45px;
+	word-break: break-all;
+	color: #595A55;
+}
+#profile{
+	width: 80%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 30px;
+	position: relative;
+}
+#cc{
+	width:80%;
+	height: 100px;
+	margin-left: 120px;
+	margin-bottom: 40px;
+	color:black !important;
+
+}
+#profile>button{
+	margin-left: 40px;
+	margin-bottom: 40px;
+	margin-top: -130px;
+}
+
 .footer-container{
 	width:100%;
 	margin-top: 40px;
@@ -35,8 +75,13 @@
 #preview1{
 	max-height:34px ;
 }
+.tablist{
+	left:10%;
+	position: relative;
+}
 
 #intro{
+	margin-top: 30px;
 	width: 80%;
 	margin-left: auto;
 	margin-right: auto;
@@ -124,6 +169,13 @@ body{
 	font-family:"微軟正黑體",Microsoft YaHei, Monaco, DFKai-sb, sans-serif;
 }
 
+
+#time,#place,#like{
+	font-size: 25px;
+	margin:15px;
+	position: relative;
+	left:10%;
+}
 .dropdown-toggle{
 	font-size: 80%;
 }

@@ -31,19 +31,22 @@ window.fbAsyncInit = function() {
 
 
 
-var queryCat = function(depend, owl) {
+var queryCat = function(depend, owl, num) {
     var Exhibition = Parse.Object.extend("Exhibition");
     var query = new Parse.Query(Exhibition);
-    query.equalTo("Catgory", depend);
-    query.ascending("Catgory");
+    if (num == 1) {
+        query.descending(depend);
+    } else {
+        query.ascending(depend);
+    }
     query.find({
         success: function(result) {
             console.log(result);
-            for (var i = 0; i < result.length; i++) {
+            for (var i = 0; i < 15; i++) {
                 var object = result[i];
                 var sdate = object.get('Start');
                 var edate = object.get('End');
-                var content = '<div class=\"owl-item item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
+                var content = '<div class=\"owl-item item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\">' + result[i].get('like') + '</i></br></p></div>';
                 console.log(content);
                 owl.trigger('add.owl.carousel', [$(content)]);
                 owl.trigger('refresh.owl.carousel');
@@ -69,8 +72,8 @@ $(document).ready(function() {
     owl2.owlCarousel();
 
 
-    queryCat("Design", owl);
-    queryCat("CulturalRelic", owl2);
+    queryCat("Start", owl, 2);
+    queryCat("like", owl2, 1);
     owl2.trigger('destroy.owl.carousel');
     owl.trigger('destroy.owl.carousel');
     owl2.owlCarousel({
@@ -97,14 +100,99 @@ $(document).ready(function() {
     }
 
     $('.profile').on('click', function() {
-      $('.self-pic>img').attr("src","images/big.jpg");
+        $('.self-pic>img').attr("src", "images/big.jpg");
         var currentUser = Parse.User.current();
         FB.getLoginStatus(function(response) {
-          console.log(response);
+            console.log(response);
             if (response.status === 'connected') {
                 FB.api('/me/picture?type=large', function(response) {
-                    $('.self-pic>img').attr("src",response.data.url);
+                    $('.self-pic>img').attr("src", response.data.url);
                 });
+            }
+        });
+
+    })
+
+    $('#liking').on('click', function(event) {
+        if (Parse.User.current()) {
+            var key = $('#myModal>.modal-dialog').attr('id');
+            var Exhibition = Parse.Object.extend("Exhibition");
+            var query=new Parse.Query(Exhibition);
+            query.equalTo('objectId',key);
+            query.find({
+              success:function(result){
+                console.log(result[0].get('like'));
+                var likenum=result[0].get('like');
+                likenum++;
+                $('#like>i').text(likenum);
+                $('#'+key+' .fa-thumbs-o-up').text('');
+                $('#'+key+' .fa-thumbs-o-up').text(likenum);
+                result[0].set('like',likenum);
+                result[0].save(null,{
+                  success:function(item){
+                    console.log('save success');
+                  },
+                  error:function(item,error){
+                    console.log(error.message);
+                  }
+                })
+              },
+              error:function(error){
+                console.log(error.message);
+              }
+            });
+
+        } else {
+            alert('請先登入');
+            window.location = "logIn.html";
+        }
+
+    })
+
+    $('#ccsubmit').on('click', function(event) {
+        event.preventDefault();
+        if (Parse.User.current()) {
+            var Comment = Parse.Object.extend("Comment");
+            var Exhibition = Parse.Object.extend("Exhibition");
+            var key = $('#myModal>.modal-dialog').attr('id');
+            var ex = new Exhibition();
+            ex.id = key;
+            var obj = new Comment();
+            obj.set("User", Parse.User.current());
+            obj.set("Exhibition", ex);
+            obj.set("Comment", $('textarea').val());
+            obj.save(null, {
+                success: function(obj) {
+                    alert('留言成功!');
+                    $('textarea').val('');
+                },
+                error: function(obj, error) {
+                    console.log(error);
+                    alert('留言失敗!');
+                }
+            });
+        } else {
+            alert('請先登入');
+            window.location = "logIn.html"
+        }
+    })
+
+    $('#proModal').on('show.bs.modal', function(event) {
+        console.log('display!!!');
+        $('.collected *').remove();
+        var Collection = Parse.Object.extend("Collection");
+        var query = new Parse.Query(Collection);
+        query.include("Exhibition");
+        query.include("User");
+        query.equalTo('User', Parse.User.current());
+        query.find({
+            success: function(result) {
+                for (var i = 0; i < result.length; i++) {
+                    $('.collected').append('<li class="ccc">' + result[i].get('Exhibition').get('Name') + '</li>');
+                }
+            },
+            error: function(error) {
+                console.log(error.message);
             }
         });
 
@@ -151,6 +239,7 @@ $(document).ready(function() {
     $('#myModal').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget); // Button that triggered the modal
         var recipient = button.attr('id');
+        $('#myModal>.modal-dialog').attr('id', recipient);
         var modal = $(this);
         var Exhibition = Parse.Object.extend("Exhibition");
         var query = new Parse.Query(Exhibition);
@@ -162,11 +251,31 @@ $(document).ready(function() {
                 var edate = object.get('End');
                 $('#myModalLabel').text(object.get('Name'));
                 console.log(object.get('Name'));
-                console.log( $('#myModalLabel').text());
+                console.log($('#myModalLabel').text());
                 $('#place>i').text(object.get('Place'));
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
                 $('#intro>span').html(object.get('Intro'));
+                $('#like>i').text(object.get('like'));
                 $('#time>i').text(sdate.getFullYear().toString() + '/' + sdate.getMonth().toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + edate.getMonth().toString() + '/' + edate.getDate().toString());
+            },
+            error: function(error) {
+                console.log(error.message);
+            }
+        });
+        var Comment = Parse.Object.extend('Comment');
+        var queryc = new Parse.Query(Comment);
+        var ex = new Exhibition();
+        ex.id = recipient;
+        queryc.include('Exhibition');
+        queryc.equalTo('Exhibition', ex);
+        queryc.descending("updatedAt");
+        queryc.find({
+            success: function(result) {
+                $('.cc3 *').remove();
+                var dic = result.length < 3 ? result.length : 3;
+                for (var i = 0; i < dic; i++) {
+                    $('.cc3').append('<div class="cc3s">' + result[i].get('Comment') + '</div>');
+                }
             },
             error: function(error) {
                 console.log(error.message);
@@ -174,7 +283,30 @@ $(document).ready(function() {
         });
 
     })
-
+    $('#collect').on('click', function() {
+        if (Parse.User.current()) {
+            var key = $('#myModal>.modal-dialog').attr('id');
+            var Exhibition = Parse.Object.extend("Exhibition");
+            var Collection = Parse.Object.extend("Collection");
+            var row = new Collection();
+            var ex = new Exhibition();
+            ex.id = key;
+            row.set("User", Parse.User.current());
+            row.set("Exhibition", ex);
+            row.save(null, {
+                success: function(row) {
+                    alert('收藏成功!');
+                },
+                error: function(row, error) {
+                    console.log(error);
+                    alert('收藏失敗');
+                }
+            });
+        } else {
+            alert('請先登入');
+            window.location = "logIn.html";
+        }
+    })
 
     $('.nav .dropdown-menu a').on('click', function(event) {
         var button = $(event.currentTarget);

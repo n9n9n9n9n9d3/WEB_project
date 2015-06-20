@@ -46,13 +46,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catagory<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
-                            <li><a>書畫</a></li>
-                            <li><a>攝影</a></li>
-                            <li><a>設計</a></li>
-                            <li><a>文物</a></li>
-                            <li><a>科學</a></li>
-                            <li><a>動漫</a></li>
-                            <li><a data-cat="Art">裝置藝術</a></li>
+                            <li><a id="Installationart">裝置藝術</a></li>
+                            <li><a id="Photography">攝影</a></li>
+                            <li><a id="Design">設計</a></li>
+                            <li><a id="CulturalRelic">文物</a></li>
+                            <li><a id="book">書籍</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -112,28 +110,44 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">夢我所夢：草間彌生亞洲巡迴展</h4>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
                     <div class="real-pic">
-                        <img src="http://www.citytalk.tw/upload/event/0/e3/38a/pb/img/192477/906x750-exactly.jpg" alt="picture"></div>
+                        <img src="" alt="picture"></div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="time">
-                            <i class="fa fa-clock-o"></i>
+                <div id="time">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div id="place">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div id="like">
+                    <i class="fa fa-thumbs-o-up"></i>
+                </div>
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="tablist" role="tablist">
+                        <li role="presentation" class="btn btn-info active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Intro</a></li>
+                        <li role="presentation" class="btn btn-info"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Comment</a></li>
+                        <li role="presentation" class="btn btn-info" id="collect">Collect</li>
+                        <li role="presentation" class="btn btn-danger" id="liking">Like</li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane  active" id="home">
+                            <p id="intro">
+                                <span></span>
+                            </p>
                         </div>
-                        <div id="place">
-                            <i class="fa fa-map-marker">國立臺灣美術館-101 展覽室 五權西路一段2號</i>
+                        <div role="tabpanel" class="tab-pane " id="profile">
+                            <textarea id="cc" cols="50" row="8"></textarea>
+                            <button class="btn btn-primary" id="ccsubmit">Submit</button>
+                            <h2>Recent 3 Comment:</h2>
+                            <div class="cc3">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <p id="intro">
-                        <span>
-                    
-                    </span>
-                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -180,8 +194,17 @@
                     <h4 class="modal-title" id="proModalLabel">個人檔案</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="self-pic">
-                        <img src="" alt="picture"></div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="self-pic">
+                                <img src="" alt="picture"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>您以收藏:</h4>
+                            <ul class="collected">
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -189,13 +212,12 @@
             </div>
         </div>
     </div>
-     <div class="footer-container">
+    <div class="footer-container">
         <div id="footer-bottom">
             <h2>Copyright and use terms</h2>
             <p>All patterns on this site can be used free of charge</p>
-           <div class="fb-like" data-href="http://davidzxc12.github.io/WEB_project/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+            <div class="fb-like" data-href="http://davidzxc12.github.io/WEB_project/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
-
     </div>
 </body>
 

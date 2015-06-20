@@ -45,13 +45,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catagory<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
-                            <li><a>書畫</a></li>
-                            <li><a>攝影</a></li>
-                            <li><a>設計</a></li>
-                            <li><a>文物</a></li>
-                            <li><a>科學</a></li>
-                            <li><a>動漫</a></li>
-                            <li><a>裝置藝術</a></li>
+                            <li><a id="Installationart">裝置藝術</a></li>
+                            <li><a id="Photography">攝影</a></li>
+                            <li><a id="Design">設計</a></li>
+                            <li><a id="CulturalRelic">文物</a></li>
+                            <li><a id="book">書籍</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -77,19 +75,19 @@
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="http://www.citytalk.tw/upload/event/0/ec/32f/pb/img/203665/812x302-exactly.jpg" alt="...">
+            <div class="item active" id="51FpUtyj4M" data-toggle="modal" data-target="#myModal">
+                <img src="http://www.citytalk.tw/upload/event/0/ee/cd/pb/img/205547/906x333-exactly.jpg" alt="...">
                 <div class="carousel-caption">
-                    新富八十好歲時-老市場的記憶與新生
+                    花生騷X優席夫 MAKAPAHAY 部落時尚潮T展
                 </div>
             </div>
-            <div class="item">
+            <div class="item" id="dSwcj2EM9d" data-toggle="modal" data-target="#myModal">
                 <img src="https://www.citytalk.tw/upload/flash/flash_35_1433739154.jpg" alt="...">
                 <div class="carousel-caption">
                     夢我所夢：草間彌生亞洲巡迴展台灣站
                 </div>
             </div>
-            <div class="item">
+            <div class="item" id="2ICzxBReGs" data-toggle="modal" data-target="#myModal">
                 <img src="http://www.citytalk.tw/upload/event/0/df/156/pb/img/184892/902x396-exactly.jpg" alt="...">
                 <div class="carousel-caption">
                     建築之境：Louis Kahn
@@ -117,28 +115,45 @@
                     <div class="real-pic">
                         <img src="" alt="picture"></div>
                 </div>
-                <div class="row">
-                    <div class="col-sm-12">
-                        <div id="time">
-                            <i class="fa fa-clock-o"></i>
+                <div id="time">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+                <div id="place">
+                    <i class="fa fa-map-marker"></i>
+                </div>
+                <div id="like">
+                    <i class="fa fa-thumbs-o-up"></i>
+                </div>
+                <div>
+                    <!-- Nav tabs -->
+                    <ul class="tablist" role="tablist">
+                        <li role="presentation" class="btn btn-info active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Intro</a></li>
+                        <li role="presentation" class="btn btn-info"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Comment</a></li>
+                        <li role="presentation" class="btn btn-info" id="collect">Collect</li>
+                        <li role="presentation" class="btn btn-danger" id="liking">Like</li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane  active" id="home">
+                            <p id="intro">
+                                <span></span>
+                            </p>
                         </div>
-                        <div id="place">
-                            <i class="fa fa-map-marker"></i>
+                        <div role="tabpanel" class="tab-pane " id="profile">
+                            <textarea id="cc" cols="50" row="8"></textarea>
+                            <button class="btn btn-primary" id="ccsubmit">Submit</button>
+                            <h2>Recent 3 Comment:</h2>
+                            <div class="cc3">
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <p id="intro">
-                        <span>
-                
-                    </span>
-                    </p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="proModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -148,8 +163,17 @@
                     <h4 class="modal-title" id="proModalLabel">個人檔案</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="self-pic">
-                        <img src="" alt="picture"></div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="self-pic">
+                                <img src="" alt="picture"></div>
+                        </div>
+                        <div class="col-sm-6">
+                            <h4>您以收藏:</h4>
+                            <ul class="collected">
+                            </ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -158,7 +182,7 @@
         </div>
     </div>
     <div class="container-fluid containt">
-        <p class="topic"><i class="fa fa-university"></i>本月推薦</p>
+        <p class="topic"><i class="fa fa-university"></i>精選展覽</p>
         <hr>
         <div class="container-fluid">
             <i class="fa fa-chevron-left fa-3x comment prev"></i>
@@ -181,7 +205,6 @@
             <p>All patterns on this site can be used free of charge</p>
             <div class="fb-like" data-href="http://davidzxc12.github.io/WEB_project/" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
         </div>
-
     </div>
     <script src="js/homepage.js"></script>
 </body>
