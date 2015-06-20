@@ -115,7 +115,6 @@ $(document).ready(function() {
 
     $('#liking').on('click', function(event) {
         if (Parse.User.current()) {
-            $('#liking').attr('disabled', false);
             var key = $('#myModal>.modal-dialog').attr('id');
             var Exhibition = Parse.Object.extend("Exhibition");
             var query = new Parse.Query(Exhibition);
@@ -263,6 +262,7 @@ $(document).ready(function() {
     })
 
     $('#myModal').on('show.bs.modal', function(event) {
+      $('#liking').attr('disabled', false);
       $('#intro').parent().addClass("active");
       $('#ccsubmit').parent().removeClass("active");
       $('.button1').addClass("active");

@@ -183,6 +183,7 @@ $(document).ready(function() {
     })
 
     $('#myModal').on('show.bs.modal', function(event) {
+    	$('#liking').attr('disabled', false);
     	$('#intro').parent().addClass("active");
     	$('#ccsubmit').parent().removeClass("active");
     	      $('.button1').addClass("active");
