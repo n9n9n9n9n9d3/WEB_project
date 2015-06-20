@@ -263,6 +263,10 @@ $(document).ready(function() {
     })
 
     $('#myModal').on('show.bs.modal', function(event) {
+      $('#intro').parent().addClass("active");
+      $('#ccsubmit').parent().removeClass("active");
+      $('.button1').addClass("active");
+      $('.button2').removeClass("active");
         var button = $(event.relatedTarget); // Button that triggered the modal
         var recipient = button.attr('id');
         $('#myModal>.modal-dialog').attr('id', recipient);
