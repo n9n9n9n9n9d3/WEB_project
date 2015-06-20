@@ -1,5 +1,5 @@
 .navbar-brand{
-	margin-left: -10% !important;
+	z-index: 5 !important;
 }
 .cc3s{
 	-webkit-border-radius: 10px 10px 10px 10px;
