@@ -108,10 +108,10 @@ $(document).ready(function() {
 
     $('#ccsubmit').on('click', function(event) {
         event.preventDefault();
-        if($('textarea').val()===''){
-          alert('請輸入留言內容');
-          return;
-      }
+        if ($('textarea').val().length === 0) {
+            alert('請輸入留言內容');
+            return;
+        }
         if (Parse.User.current()) {
             var Comment = Parse.Object.extend("Comment");
             var Exhibition = Parse.Object.extend("Exhibition");
@@ -126,6 +126,25 @@ $(document).ready(function() {
                 success: function(obj) {
                     alert('留言成功!');
                     $('textarea').val('');
+                    var Comment = Parse.Object.extend('Comment');
+                    var queryc = new Parse.Query(Comment);
+                    var ex = new Exhibition();
+                    ex.id = $('#myModal>.modal-dialog').attr('id');
+                    queryc.include('Exhibition');
+                    queryc.equalTo('Exhibition', ex);
+                    queryc.descending("updatedAt");
+                    queryc.find({
+                        success: function(result) {
+                            $('.cc3 *').remove();
+                            var dic = result.length < 3 ? result.length : 3;
+                            for (var i = 0; i < dic; i++) {
+                                $('.cc3').append('<div class="cc3s">' + '“' + result[i].get('Comment') + '”' + '</div>');
+                            }
+                        },
+                        error: function(error) {
+                            console.log(error.message);
+                        }
+                    });
                 },
                 error: function(obj, error) {
                     console.log(error);
@@ -230,7 +249,7 @@ $(document).ready(function() {
 
     $('#liking').on('click', function(event) {
         if (Parse.User.current()) {
-        	$('#liking').attr('disabled', false);
+            $('#liking').attr('disabled', false);
             var key = $('#myModal>.modal-dialog').attr('id');
             var Exhibition = Parse.Object.extend("Exhibition");
             var query = new Parse.Query(Exhibition);
