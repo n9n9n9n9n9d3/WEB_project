@@ -51,7 +51,7 @@ function EasySearch(event) {
                 var object = result[i];
                 var sdate = object.get('Start');
                 var edate = object.get('End');
-                var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
+                var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i>' + result[i].get('like') + '</br></p></div>';
                 $(".containt").append(content);
             }
         },
@@ -86,39 +86,39 @@ $(document).ready(function() {
     })
 
     $('#proModal').on('show.bs.modal', function(event) {
-      console.log('display!!!');
-      $('.collected *').remove();
-      var Collection=Parse.Object.extend("Collection");
-      var query=new Parse.Query(Collection);
-      query.include("Exhibition");
-      query.include("User");
-      query.equalTo('User',Parse.User.current());
-      query.find({
-        success:function(result){
-          for(var i=0;i<result.length;i++){
-            $('.collected').append('<li class="ccc">'+result[i].get('Exhibition').get('Name')+'</li>');
-          }
-        },
-        error:function(error){
-          console.log(error.message);
-        }
-      });
+        console.log('display!!!');
+        $('.collected *').remove();
+        var Collection = Parse.Object.extend("Collection");
+        var query = new Parse.Query(Collection);
+        query.include("Exhibition");
+        query.include("User");
+        query.equalTo('User', Parse.User.current());
+        query.find({
+            success: function(result) {
+                for (var i = 0; i < result.length; i++) {
+                    $('.collected').append('<li class="ccc">' + result[i].get('Exhibition').get('Name') + '</li>');
+                }
+            },
+            error: function(error) {
+                console.log(error.message);
+            }
+        });
 
     })
 
-    $('#ccsubmit').on('click',function(event){
-      event.preventDefault();
-      if(Parse.User.current()){
-        var Comment=Parse.Object.extend("Comment");
-        var Exhibition=Parse.Object.extend("Exhibition");
-        var key=$('#myModal>.modal-dialog').attr('id');
-        var ex=new Exhibition();
-        ex.id=key;
-        var obj=new Comment();
-        obj.set("User",Parse.User.current());
-        obj.set("Exhibition",ex);
-        obj.set("Comment",$('textarea').val());
-        obj.save(null, {
+    $('#ccsubmit').on('click', function(event) {
+        event.preventDefault();
+        if (Parse.User.current()) {
+            var Comment = Parse.Object.extend("Comment");
+            var Exhibition = Parse.Object.extend("Exhibition");
+            var key = $('#myModal>.modal-dialog').attr('id');
+            var ex = new Exhibition();
+            ex.id = key;
+            var obj = new Comment();
+            obj.set("User", Parse.User.current());
+            obj.set("Exhibition", ex);
+            obj.set("Comment", $('textarea').val());
+            obj.save(null, {
                 success: function(obj) {
                     alert('留言成功!');
                     $('textarea').val('');
@@ -128,11 +128,10 @@ $(document).ready(function() {
                     alert('留言失敗!');
                 }
             });
-      }
-      else{
-        alert('請先登入');
-        window.location="logIn.html"
-      }
+        } else {
+            alert('請先登入');
+            window.location = "logIn.html"
+        }
     })
 
     $('#collect').on('click', function() {
@@ -141,8 +140,8 @@ $(document).ready(function() {
             var Exhibition = Parse.Object.extend("Exhibition");
             var Collection = Parse.Object.extend("Collection");
             var row = new Collection();
-            var ex=new Exhibition();
-            ex.id=key;
+            var ex = new Exhibition();
+            ex.id = key;
             row.set("User", Parse.User.current());
             row.set("Exhibition", ex);
             row.save(null, {
@@ -179,30 +178,31 @@ $(document).ready(function() {
                 $('#place>i').text(object.get('Place'));
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
                 $('#intro>span').html(object.get('Intro'));
+                $('#like>i').text(object.get('like'));
                 $('#time>i').text(sdate.getFullYear().toString() + '/' + sdate.getMonth().toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + edate.getMonth().toString() + '/' + edate.getDate().toString());
             },
             error: function(error) {
                 console.log(error.message);
             }
         });
-        var Comment=Parse.Object.extend('Comment');
-        var queryc=new Parse.Query(Comment);
-        var ex=new Exhibition();
-        ex.id=recipient;
+        var Comment = Parse.Object.extend('Comment');
+        var queryc = new Parse.Query(Comment);
+        var ex = new Exhibition();
+        ex.id = recipient;
         queryc.include('Exhibition');
-        queryc.equalTo('Exhibition',ex);
+        queryc.equalTo('Exhibition', ex);
         queryc.descending("updatedAt");
         queryc.find({
-          success:function(result){
-            $('.cc3 *').remove();
-            var dic= result.length<3 ? result.length : 3;
-            for(var i=0;i<dic;i++){
-              $('.cc3').append('<div class="cc3s">'+result[i].get('Comment')+'</div>');
+            success: function(result) {
+                $('.cc3 *').remove();
+                var dic = result.length < 3 ? result.length : 3;
+                for (var i = 0; i < dic; i++) {
+                    $('.cc3').append('<div class="cc3s">' + result[i].get('Comment') + '</div>');
+                }
+            },
+            error: function(error) {
+                console.log(error.message);
             }
-          },
-          error:function(error){
-            console.log(error.message);
-          }
         });
 
     })
@@ -224,33 +224,33 @@ $(document).ready(function() {
         window.location = "index.html";
     })
 
-     $('#liking').on('click', function(event) {
+    $('#liking').on('click', function(event) {
         if (Parse.User.current()) {
             var key = $('#myModal>.modal-dialog').attr('id');
             var Exhibition = Parse.Object.extend("Exhibition");
-            var query=new Parse.Query(Exhibition);
-            query.equalTo('objectId',key);
+            var query = new Parse.Query(Exhibition);
+            query.equalTo('objectId', key);
             query.find({
-              success:function(result){
-                console.log(result[0].get('like'));
-                var likenum=result[0].get('like');
-                likenum++;
-                $('#like>i').text(likenum);
-                $('#'+key+' .fa-thumbs-o-up').text('');
-                $('#'+key+' .fa-thumbs-o-up').text(likenum);
-                result[0].set('like',likenum);
-                result[0].save(null,{
-                  success:function(item){
-                    console.log('save success');
-                  },
-                  error:function(item,error){
+                success: function(result) {
+                    console.log(result[0].get('like'));
+                    var likenum = result[0].get('like');
+                    likenum++;
+                    $('#like>i').text(likenum);
+                    $('#' + key + ' .fa-thumbs-o-up').text('');
+                    $('#' + key + ' .fa-thumbs-o-up').text(likenum);
+                    result[0].set('like', likenum);
+                    result[0].save(null, {
+                        success: function(item) {
+                            console.log('save success');
+                        },
+                        error: function(item, error) {
+                            console.log(error.message);
+                        }
+                    })
+                },
+                error: function(error) {
                     console.log(error.message);
-                  }
-                })
-              },
-              error:function(error){
-                console.log(error.message);
-              }
+                }
             });
 
         } else {
@@ -278,7 +278,7 @@ $(document).ready(function() {
                     var object = result[i];
                     var sdate = object.get('Start');
                     var edate = object.get('End');
-                    var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i>'+object.get('like')+'</br></p></div>';
+                    var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i>' + object.get('like') + '</br></p></div>';
                     $('.containt').append(content);
                     console.log(content);
                 }
@@ -375,7 +375,7 @@ $(document).ready(function() {
                     var object = result[i];
                     var sdate = object.get('Start');
                     var edate = object.get('End');
-                    var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
+                    var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> ' + result[i].get('like') + '</br></p></div>';
                     $(".containt").append(content);
                 }
             },
