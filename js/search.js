@@ -207,6 +207,7 @@ $(document).ready(function() {
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
                 $('#intro>span').html(object.get('Intro'));
                 $('#like>i').text(object.get('like'));
+                $('#price>i').text(object.get('Price'));
                 $('#time>i').text(sdate.getFullYear().toString() + '/' + sdate.getMonth().toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + edate.getMonth().toString() + '/' + edate.getDate().toString());
             },
             error: function(error) {

@@ -285,6 +285,7 @@ $(document).ready(function() {
                 $('#place>i').text(object.get('Place'));
                 $('.real-pic>img').attr('src', object.get('Real_pic'));
                 $('#intro>span').html(object.get('Intro'));
+                $('#price>i').text(object.get('Price'));
                 $('#like>i').text(object.get('like'));
                 $('#time>i').text(sdate.getFullYear().toString() + '/' + sdate.getMonth().toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + edate.getMonth().toString() + '/' + edate.getDate().toString());
             },

@@ -174,7 +174,7 @@ body{
 }
 
 
-#time,#place,#like{
+#time,#place,#like,#price{
 	font-size: 25px;
 	margin:15px;
 	position: relative;
