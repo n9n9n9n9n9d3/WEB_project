@@ -131,6 +131,7 @@ $(document).ready(function() {
                 result[0].save(null,{
                   success:function(item){
                     console.log('save success');
+                    $('#liking').attr('disabled', true);
                   },
                   error:function(item,error){
                     console.log(error.message);
