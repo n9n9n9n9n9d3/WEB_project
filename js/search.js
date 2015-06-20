@@ -224,6 +224,42 @@ $(document).ready(function() {
         window.location = "index.html";
     })
 
+     $('#liking').on('click', function(event) {
+        if (Parse.User.current()) {
+            var key = $('#myModal>.modal-dialog').attr('id');
+            var Exhibition = Parse.Object.extend("Exhibition");
+            var query=new Parse.Query(Exhibition);
+            query.equalTo('objectId',key);
+            query.find({
+              success:function(result){
+                console.log(result[0].get('like'));
+                var likenum=result[0].get('like');
+                likenum++;
+                $('#like>i').text(likenum);
+                $('#'+key+' .fa-thumbs-o-up').text('');
+                $('#'+key+' .fa-thumbs-o-up').text(likenum);
+                result[0].set('like',likenum);
+                result[0].save(null,{
+                  success:function(item){
+                    console.log('save success');
+                  },
+                  error:function(item,error){
+                    console.log(error.message);
+                  }
+                })
+              },
+              error:function(error){
+                console.log(error.message);
+              }
+            });
+
+        } else {
+            alert('請先登入');
+            window.location = "logIn.html";
+        }
+
+    })
+
 
     $('.nav .dropdown-menu a').on('click', function(event) {
         var button = $(event.currentTarget);
