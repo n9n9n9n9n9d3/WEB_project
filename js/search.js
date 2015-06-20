@@ -108,6 +108,10 @@ $(document).ready(function() {
 
     $('#ccsubmit').on('click', function(event) {
         event.preventDefault();
+        if($('textarea').val()===''){
+          alert('請輸入留言內容');
+          return;
+      }
         if (Parse.User.current()) {
             var Comment = Parse.Object.extend("Comment");
             var Exhibition = Parse.Object.extend("Exhibition");
