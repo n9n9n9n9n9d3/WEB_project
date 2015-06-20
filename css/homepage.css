@@ -121,9 +121,6 @@ text-align: center;
 	top:90%;
 	z-index: 3;
 }
-.navbar-brand{
-	margin-left: -200px !important;
-}
 img.logo{
 	width:150px;
     height:30px;

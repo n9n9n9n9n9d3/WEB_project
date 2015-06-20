@@ -226,6 +226,7 @@ $(document).ready(function() {
 
     $('#liking').on('click', function(event) {
         if (Parse.User.current()) {
+        	$('#liking').attr('disabled', false);
             var key = $('#myModal>.modal-dialog').attr('id');
             var Exhibition = Parse.Object.extend("Exhibition");
             var query = new Parse.Query(Exhibition);
