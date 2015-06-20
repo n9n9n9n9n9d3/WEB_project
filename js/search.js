@@ -197,7 +197,7 @@ $(document).ready(function() {
                 $('.cc3 *').remove();
                 var dic = result.length < 3 ? result.length : 3;
                 for (var i = 0; i < dic; i++) {
-                    $('.cc3').append('<div class="cc3s">' + result[i].get('Comment') + '</div>');
+                    $('.cc3').append('<div class="cc3s">'+'“' + result[i].get('Comment') + '”'+'</div>');
                 }
             },
             error: function(error) {
