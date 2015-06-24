@@ -47,23 +47,24 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
-                            <li><a id="Installationart">裝置藝術</a></li>
+                            
                             <li><a id="Photography">攝影</a></li>
                             <li><a id="Design">設計</a></li>
                             <li><a id="CulturalRelic">文物</a></li>
                             <li><a id="book">書畫</a></li>
+                            <li><a id="Installationart">裝置藝術</a></li>
                         </ul>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <a class="profile btn btn-link" data-toggle="modal" data-target="#proModal">個人檔案</a>
-                    <a href="logIn.html" class="login btn btn-link">LogIn</a>
-                    <a class="logout btn btn-link">LogOut</a>
+                    <a href="logIn.html" class="login btn btn-link">登入</a>
+                    <a class="logout btn btn-link">登出</a>
                     <div class="form-group">
                         <input type="text" class="form-control easysearch">
                     </div>
-                    <button onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton">Search</button>
-                    <a class="btn btn-link" href="search.html" role="button">Advanced Search</a>
+                    <button onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton"><i class="fa fa-search"></i></button>
+                    <a class="btn btn-link" href="search.html" role="button">進階搜尋</a>
                 </form>
             </div>
         </div>
@@ -77,23 +78,26 @@
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active">
-                <img src="http://www.citytalk.tw/upload/event/0/ec/32f/pb/img/203665/812x302-exactly.jpg" alt="...">
-                <div class="carousel-caption">
-                    新富八十好歲時-老市場的記憶與新生
-                </div>
-            </div>
-            <div class="item">
-                <img src="https://www.citytalk.tw/upload/flash/flash_35_1433739154.jpg" alt="...">
-                <div class="carousel-caption">
-                    夢我所夢：草間彌生亞洲巡迴展台灣站
-                </div>
-            </div>
-            <div class="item">
+            <div class="item active" id="kDkElZbBRW" data-toggle="modal" data-target="#myModal">
                 <img src="http://www.citytalk.tw/upload/event/0/df/156/pb/img/184892/902x396-exactly.jpg" alt="...">
-                <div class="carousel-caption">
-                    建築之境：Louis Kahn
+                 <div class="carousel-caption">
+                    雕‧塑－永恆的建築：阿爾瓦羅‧西薩亞洲作品展
                 </div>
+            </div>
+
+            <div class="item" id="DaD98RFllW" data-toggle="modal" data-target="#myModal">
+                <img src="https://www.citytalk.tw/upload/flash/flash_35_1433739154.jpg" alt="...">
+                 <div class="carousel-caption">
+                    米飛兔60週年展
+                </div>
+            </div>
+            
+            <div class="item " id="51FpUtyj4M" data-toggle="modal" data-target="#myModal">
+                <img src="http://www.citytalk.tw/upload/event/0/ee/cd/pb/img/205547/906x333-exactly.jpg" alt="...">
+                <div class="carousel-caption">
+                    花生騷X優席夫 MAKAPAHAY 部落時尚潮T展
+                </div>
+                
             </div>
         </div>
         <!-- Controls -->
@@ -131,11 +135,11 @@
                 </div>
                 <div>
                     <!-- Nav tabs -->
-                    <ul class="tablist" role="tablist">
-                        <li role="presentation" class="btn btn-info active button1"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Intro</a></li>
-                        <li role="presentation" class="btn btn-info button2"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Comment</a></li>
-                        <li role="presentation" class="btn btn-info" id="collect">Collect</li>
-                        <li role="presentation" class="btn btn-danger" id="liking">Like</li>
+                   <ul class="tablist" role="tablist">
+                        <li role="presentation" class="btn btn-default outline active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">簡介</a></li>
+                        <li role="presentation" class="btn btn-default outline"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">評論</a></li>
+                        <li role="presentation" class="btn btn-default outline" id="collect">收藏</li>
+                        <li role="presentation" class="btn btn-primary" id="liking" ><i class="fa fa-thumbs-o-up"></i></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -146,8 +150,8 @@
                         </div>
                         <div role="tabpanel" class="tab-pane " id="profile">
                             <textarea id="cc" cols="50" row="8"></textarea>
-                            <button class="btn btn-primary" id="ccsubmit">Submit</button>
-                            <h2>Recent 3 Comment:</h2>
+                            <button class="btn btn-primary" id="ccsubmit">送出</button>
+                            <h4>最新留言:</h4>
                             <div class="cc3">
                             </div>
                         </div>
@@ -178,18 +182,19 @@
         </select>
         <select class="form-control cat-select">
             <option value="none">無特定類別</option>
-            <option value="Art">藝術</option>
-            <option value="two">bla</option>
-            <option value="three">blablabla</option>
-            <option value="four">blablablalba</option>
-            <option value="five">blablablablalba</option>
+            <option value="Art">建築</option>
+            <option value="two">攝影</option>
+            <option value="three">書畫</option>
+            <option value="four">文物</option>
+            <option value="five">裝置藝術</option>
         </select>
-        <button type="button" class="search-submit btn btn-primary">Search</button>
+        <button type="button" class="search-submit btn btn-default outline">Search</button>
         <script src="js/search.js"></script>
     </div>
     <div class="container-fluid containt">
-        <h1></h1>
+        <h3></h3>
     </div>
+
     <div class="modal fade" id="proModal" tabindex="-1" role="dialog" aria-labelledby="proModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">

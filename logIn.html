@@ -6,8 +6,8 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/css.css">
-
+  <link rel="stylesheet" href="css/logIn.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <!--引入初始化 Parse 的 js 檔案-->
   <script type="text/javascript" src="js/key.js"></script>
   <script  type="text/javascript">
@@ -41,6 +41,52 @@
 </head>
 
 <body>
+  <nav class="navbar navbar-fixed-top navbar-default">
+                    <a class="navbar-brand" href="index.html">
+                    <img class="logo" src="http://i.imgur.com/JkN2u37.png">
+                </a>
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CATEGORY<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a id="book">書畫</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
+                            
+                            <li><a id="Photography">攝影</a></li>
+                            <li><a id="Design">設計</a></li>
+                            <li><a id="CulturalRelic">文物</a></li>
+                            
+                            <li><a id="Installationart">裝置藝術</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="navbar-form navbar-right" role="search">
+                    <a class="profile btn btn-link" data-toggle="modal" data-target="#proModal">個人檔案</a>
+                    <a href="logIn.html" class="login btn btn-link">登入</a>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control easysearch">
+                    </div>
+                    <button class="btn btn-default easybutton"><i class="fa fa-search"></i></button>
+                    <a class="btn btn-link" href="search.html" role="button">進階搜尋</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
   <center>
   <div class="container">
     <div class="row">
@@ -55,6 +101,14 @@
             </div>
           </div>
 
+ <div class = "row">
+          <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <h3 ><i class="fa fa-sign-in"></i>  登入</h3><hr>
+            </div>
+          </div>
+
+          
       <!-- Text input-->
        <div class = "type">
       <div class="form-group">
@@ -78,12 +132,13 @@
       </div>
 
       <!-- Button -->
+
       <div class="form-group">
         <label class="col-md-4 control-label" for="logInBtn"></label>
         <div class="col-md-4">
           <button id="logInBtn" name="logInBtn" class="btn btn-default">登入</button>
           <a href="signUp.html" class="btn">註冊</a>
-          <button id="fbloginBtn" class="btn btn-primary" type="submit">臉書登入</button>
+          <button id="fbloginBtn" class="btn btn-primary" type="submit">FB登入</button>
         </div>
       </div>
     </div>

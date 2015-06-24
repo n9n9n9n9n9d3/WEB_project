@@ -44,26 +44,28 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Category<span class="caret"></span></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">CATEGORY<span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
+                            <li><a id="book">書畫</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" id="Architect">建築</a></li>
-                            <li><a id="Installationart">裝置藝術</a></li>
+                            
                             <li><a id="Photography">攝影</a></li>
                             <li><a id="Design">設計</a></li>
                             <li><a id="CulturalRelic">文物</a></li>
-                            <li><a id="book">書畫</a></li>
+                            
+                            <li><a id="Installationart">裝置藝術</a></li>
                         </ul>
                     </li>
                 </ul>
                 <form class="navbar-form navbar-right" role="search">
                     <a class="profile btn btn-link" data-toggle="modal" data-target="#proModal">個人檔案</a>
-                    <a href="logIn.html" class="login btn btn-link">LogIn</a>
-                    <a class="logout btn btn-link">LogOut</a>
+                    <a href="logIn.html" class="login btn btn-link">登入</a>
+                    <a class="logout btn btn-link">登出</a>
                     <div class="form-group">
                         <input type="text" class="form-control easysearch">
                     </div>
-                    <button class="btn btn-default easybutton">Search</button>
-                    <a class="btn btn-link" href="search.html" role="button">Advanced Search</a>
+                    <button class="btn btn-default easybutton"><i class="fa fa-search"></i></button>
+                    <a class="btn btn-link" href="search.html" role="button">進階搜尋</a>
                 </form>
             </div>
         </div>
@@ -77,23 +79,26 @@
         </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
-            <div class="item active" id="51FpUtyj4M" data-toggle="modal" data-target="#myModal">
-                <img src="http://www.citytalk.tw/upload/event/0/ee/cd/pb/img/205547/906x333-exactly.jpg" alt="...">
-                <div class="carousel-caption">
-                    花生騷X優席夫 MAKAPAHAY 部落時尚潮T展
-                </div>
-            </div>
-            <div class="item" id="DaD98RFllW" data-toggle="modal" data-target="#myModal">
-                <img src="https://www.citytalk.tw/upload/flash/flash_35_1433739154.jpg" alt="...">
-                <div class="carousel-caption">
-                    【米飛兔60週年特展】
-                </div>
-            </div>
-            <div class="item" id="kDkElZbBRW" data-toggle="modal" data-target="#myModal">
+            <div class="item active" id="kDkElZbBRW" data-toggle="modal" data-target="#myModal">
                 <img src="http://www.citytalk.tw/upload/event/0/df/156/pb/img/184892/902x396-exactly.jpg" alt="...">
-                <div class="carousel-caption">
+                 <div class="carousel-caption">
                     雕‧塑－永恆的建築：阿爾瓦羅‧西薩亞洲作品展
                 </div>
+            </div>
+
+            <div class="item" id="DaD98RFllW" data-toggle="modal" data-target="#myModal">
+                <img src="https://www.citytalk.tw/upload/flash/flash_35_1433739154.jpg" alt="...">
+                 <div class="carousel-caption">
+                    米飛兔60週年展
+                </div>
+            </div>
+            
+            <div class="item " id="51FpUtyj4M" data-toggle="modal" data-target="#myModal">
+                <img src="http://www.citytalk.tw/upload/event/0/ee/cd/pb/img/205547/906x333-exactly.jpg" alt="...">
+                <div class="carousel-caption">
+                    花生騷X優席夫 MAKAPAHAY 部落時尚潮T展
+                </div>
+                
             </div>
         </div>
         <!-- Controls -->
@@ -132,10 +137,10 @@
                 <div>
                     <!-- Nav tabs -->
                     <ul class="tablist" role="tablist">
-                        <li role="presentation" class="btn btn-info active button1"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Intro</a></li>
-                        <li role="presentation" class="btn btn-info button2"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Comment</a></li>
-                        <li role="presentation" class="btn btn-info" id="collect">Collect</li>
-                        <li role="presentation" class="btn btn-danger" id="liking" >Like</li>
+                        <li role="presentation" class="btn btn-default outline active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">簡介</a></li>
+                        <li role="presentation" class="btn btn-default outline"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">評論</a></li>
+                        <li role="presentation" class="btn btn-default outline" id="collect">收藏</li>
+                        <li role="presentation" class="btn btn-primary" id="liking" ><i class="fa fa-thumbs-o-up"></i></li>
                     </ul>
                     <!-- Tab panes -->
                     <div class="tab-content">
@@ -146,15 +151,15 @@
                         </div>
                         <div role="tabpanel" class="tab-pane " id="profile">
                             <textarea id="cc" cols="50" row="8"></textarea>
-                            <button class="btn btn-primary" id="ccsubmit">Submit</button>
-                            <h2>Recent 3 Comment:</h2>
+                            <button class="btn btn-primary" id="ccsubmit">送出</button>
+                            <h3>最新留言:</h3>
                             <div class="cc3">
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                 </div>
             </div>
         </div>
@@ -181,7 +186,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">關閉</button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,74 @@
+.footer-container{
+	font-family: Yu Gothic,SimHei,Meiryo,"微軟正黑體";
+	width:100%;
+	margin-top: 40px;
+	padding-top: 6px;
+	background-color: rgba(81,81,81,0.5);
+}
+#footer-bottom{
+	width:800px;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+#footer-bottom h2{
+	font-size: 15px;
+	margin-bottom: 12px;
+	color:#CCC;
+	text-shadow: 0 1px #1f1f1f;
+}
+#footer-bottom p{
+	font-size: 15px;
+	color:#CCC;
+	line-height: 20px;
+	margin-bottom: 0px;
+
+}
+.navbar-brand{
+	z-index: 5 !important;
+}
+img.logo{
+	width:120px;
+    height:22px;
+	z-index: 0;
+}
+
+.type{
+  font-weight : 100;
+  font-size : 15px
+}
+
+nav{
+
+	position: fixed;
+	margin-bottom: 0px;
+	z-index: 2;
+	padding-top:10px;
+	font-size: 150%;
+	font-family: Yu Gothic,SimHei,Meiryo,"微軟正黑體";
+}
+ul.dropdown-menu{
+	background-color:rgba(187,212,209,0.8);
+	font-size: 100%;
+}
+ul.dropdown-menu>li>a{
+	color:black;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+body{
+	/*background-image: url("../background.png");*/
+
+	color: #FFF;
+	background-color: rgb(187,212,209);
+	font-family:Malgun Gothic,Dotum,Yu Gothic,"微軟正黑體",Microsoft YaHei, Monaco, DFKai-sb, sans-serif;
+	font-weight: 100;
+}
+
+.dropdown-toggle{
+	font-size: 80%;
+}
+
+.login{
+	size: 60%;
+}
