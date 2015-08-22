@@ -97,7 +97,7 @@ text-align: center;
 	background-color: rgba(240,240,220,0.8);
 	overflow:hidden;
 	color:#000;
-	
+
 }
 .container-fluid{
 	max-width: 90%;
@@ -191,7 +191,7 @@ body{
 .owl-carousel .item>h4{
 	font-size: 150%;
 	font-weight: 800;
-  
+
 }
 .owl-carousel .item>p{
 	font-size:95%;
@@ -217,14 +217,14 @@ body{
 	top:30%;
 	z-index: 4;
 }
-#myModal .modal-dialog  
+#myModal .modal-dialog
 {
 	width:80%;
 }
 
 .containt .item{
-	word-wrap: break-word; 
-	width:350px; 
+	word-wrap: break-word;
+	width:350px;
    display: inline-block;
   margin:10px;
   -webkit-border-radius: 3px;
@@ -241,7 +241,7 @@ body{
 	font-size: 130%;
 	font-weight: 200;
 	color:rgb(51,51,93);
-  
+
 }
 .containt .item>p{
 	font-size:95%;
@@ -269,7 +269,7 @@ body{
     padding: 6px 10px;
 }
 .btn-default.outline {
-    
+
     color: rgba(51,51,100,0.5);
     border-color: rgba(51,51,100,0.5);
 }

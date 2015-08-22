@@ -339,10 +339,10 @@ $(document).ready(function() {
         }
     })
 
-    $('.nav .dropdown-menu a').on('click', function(event) {
+    $('.service_block .wow a').on('click', function(event) {
         var button = $(event.currentTarget);
         $('.containt *').remove();
-        $('.containt').append('<p class=\"topic\"><i class=\"fa fa-university\"></i>' + button.text() + '</p><hr>');
+        $('.containt').append('<p class=\"topic\" id=\"tohere\"><i class=\"fa fa-university\"></i>' + button.text() + '</p><hr>');
         var cat = button.attr('id');
         console.log(cat);
         var Exhibition = Parse.Object.extend("Exhibition");
