@@ -2,9 +2,12 @@ Parse.initialize("zq26lP7dyXL0SyvJ1SOyDjUwn27O9Wxa3eFehdi7", "nrMNihVPIxOwlls7NJ
 
 window.fbAsyncInit = function() {
     Parse.FacebookUtils.init({
-        appId: '1461518597495814',
-        xfbml: true,
-        version: 'v2.3'
+        //appId: '1461518597495814',
+        //xfbml: true,
+        //version: 'v2.3'
+        appId      : '392550567607968',
+        xfbml      : true,
+        version    : 'v2.4'
     });
     FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
